@@ -13,11 +13,8 @@ function runInContext() {
 }
 
 function display(title, contents) {
-  var parts = $.fileName.split(/(\/|\\)/);
-  parts.pop();
-
-  var dirname = parts.join('');
-  var view = $.evalFile(dirname + 'view.jsx');
+  var viewfile = $.fileName.replace(/[^\/\\]+$/, 'view.jsx');
+  var view = $.evalFile(viewfile);
 
   var window = new Window(view);
   var output = window.findElement('output');
